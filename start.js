@@ -1,15 +1,17 @@
 /** app.js */
 const app = require('./app');
 
-/** Input Parameter */
+/** Input Parameter 
 var args = process.argv.slice(2);
 var size = args.length;
 if (size < 1) {
     console.log("Please enter port number to listen");
     process.exit();
 }
-/** Listen port **/
-var listenPort = args[0];
+**/
+
+/** Listen port for heroku **/
+var listenPort = process.env.PORT || 13000;
 
 /** Start express server **/
 const server = app.listen(listenPort, ()=> {

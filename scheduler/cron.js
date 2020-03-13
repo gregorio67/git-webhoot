@@ -6,7 +6,7 @@ const cron = require('node-cron');
 /** External service stack **/
 var options = {
     method: 'GET',
-    uri: 'https://wirewebhook.herokuapp.com/'
+    uri: 'https://wirewebhook.herokuapp.com/live.do'
 };
 
 const startcron = () => {

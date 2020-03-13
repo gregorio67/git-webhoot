@@ -6,17 +6,15 @@ const Request = require('request-promise');
 const router = express.Router();
 
 const SLACK_URI = 'https://hooks.slack.com/services/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'
-router.post('/slack.do', (request, response) => {
-    console.log(request.body)
-    console.log(request.body.time)
-    console.log(request.body.offset)
-    console.log(request.body.pageSize)
+
+router.post('/message.do', (request, response) => {
+    console.log(request.message)
 
     /** External service stack **/
     var options = {
         method: 'POST',
         uri: SLACK_URI,
-        body : request.body,
+        body : JSON.stringify(JSON.stringify()),
         json: true,
         headers: {
             'Content-Type': 'application/json'
@@ -24,28 +22,18 @@ router.post('/slack.do', (request, response) => {
     };
 
     /** Call external service **/
-    console.log(SLACK_URI);
+    console.info("Send message : [%s]", options.body);
+
     Request(options)
         .then(function (body){
-            console.log(body)
-            response.status(200).json(body);
+            console.info(body)
+            response.render('message'); 
         })
         .catch(function (err) {
-            console.log(err);
+            console.error(err);
+            response.render('message'); 
         })
 })
-
-router.get('/live.do', (request, response) => {
-    var message = 'Welcome to wire webhook !!!'
-    response.status(200).send(message);
-});
-
-
-router.get('/', (request, response) => {
-    response.render('message');
-});
-
-
 
 
 module.exports = router;

@@ -1,5 +1,6 @@
 /** app.js */
 const app = require('./app');
+const scheduler = require('./scheduler/cron');
 
 /** Input Parameter 
 var args = process.argv.slice(2);
@@ -13,7 +14,11 @@ if (size < 1) {
 /** Listen port for heroku **/
 var listenPort = process.env.PORT || 13000;
 
+scheduler.startcron();
+
 /** Start express server **/
 const server = app.listen(listenPort, ()=> {
     console.log(`Express is running on port ${server.address().port}`);
 })
+
+

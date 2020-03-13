@@ -5,7 +5,7 @@ const Request = require('request-promise');
 
 const router = express.Router();
 
-const URI = 'http://192.168.219.108:7070/userTask.do'
+const SLACK_URI = 'https://hooks.slack.com/services/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'
 router.post('/slack.do', (request, response) => {
     console.log(request.body)
     console.log(request.body.time)
@@ -15,7 +15,7 @@ router.post('/slack.do', (request, response) => {
     /** External service stack **/
     var options = {
         method: 'POST',
-        uri: URI,
+        uri: SLACK_URI,
         body : request.body,
         json: true,
         headers: {
@@ -24,6 +24,7 @@ router.post('/slack.do', (request, response) => {
     };
 
     /** Call external service **/
+    console.log(SLACK_URI);
     Request(options)
         .then(function (body){
             console.log(body)

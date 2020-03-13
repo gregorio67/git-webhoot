@@ -30,4 +30,8 @@ router.post('/slack.do', (request, response) => {
         })
 })
 
+router.get('/', (request, response) => {
+    var message = 'Welcome to wire webhook !!!'
+    response.status(200).send(message);
+});
 module.exports = router;

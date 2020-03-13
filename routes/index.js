@@ -22,6 +22,7 @@ router.post('/slack.do', (request, response) => {
             'Content-Type': 'application/json'
         }
     };
+
     /** Call external service **/
     Request(options)
         .then(function (body){
@@ -37,9 +38,7 @@ router.get('/', (request, response) => {
     var message = 'Welcome to wire webhook !!!'
     response.status(200).send(message);
 });
-<<<<<<< HEAD
+
 
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> d5230ca03218d017e40839654f5ac00d4dde90cc
+
